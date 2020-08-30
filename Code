@@ -21,15 +21,12 @@ TRUE ~ .
 pbp_Original$play_id <- 1:nrow(pbp_Original)
 pbp <- pbp_Original
 
-# FIND INCORRECTLY LABELED TIMEOUT ERRORS HERE
-# View(pbp_Original %>% filter(timeout == 1 & play_type != "no_play" & !str_detect(desc, "(Challenge)") & !str_detect(desc, "(challenge)")))
-
-ShouldBeLabeledNoPlay <- pbp_Original %>% filter(timeout == 1 & play_type != "no_play"
+ShouldBeLabeledNoPlay <- pbp %>% filter(timeout == 1 & play_type != "no_play"
 & !str_detect(desc, "(Challenge)") & !str_detect(desc, "(challenge)") & str_detect(desc, "(Timeout)"))
 ShouldBeLabeledNoPlayVec <- ShouldBeLabeledNoPlay$play_id
 pbp[ShouldBeLabeledNoPlayVec, "play_type"] <- "no_play"
 
-WronglyLabeledTimeout <- pbp_Original %>% filter(timeout == 1 & play_type != "no_play"
+WronglyLabeledTimeout <- pbp %>% filter(timeout == 1 & play_type != "no_play"
 & !str_detect(desc, "(Challenge)") & !str_detect(desc, "(challenge)") & !str_detect(desc, "(Timeout)"))
 WronglyLabeledTimeoutVec <- WronglyLabeledTimeout$play_id
 pbp[WronglyLabeledTimeoutVec, "timeout"] <- 0
