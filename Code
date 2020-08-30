@@ -38,27 +38,6 @@ WrongLabelPATAsNoPlay <- pbp %>% filter(extra_point_attempt == 1 & play_type != 
 WrongLabelPATAsNoPlayVec <- WrongLabelPATAsNoPlay$play_id
 pbp[WrongLabelPATAsNoPlayVec, "play_type"] <- "extra_point"
 
-# One play missing here, now the 2nd down right BEFORE Batch is sacked, 13:27
-# View(pbp %>% filter(game_id == "1999_16_DEN_DET", qtr == 4))
-
-# Missing play here, shortly before 8:22 FG (1st down before Dillon run)
-# View(pbp %>% filter(game_id == "1999_05_CIN_CLE", qtr == 1))
-
-# Missing play here, right after 11:25 DPI
-# View(pbp %>% filter(game_id == "1999_08_TB_DET", qtr == 4))
-
-# Missing play right before 3:02 NE ineligible man downfield
-# View(pbp %>% filter(game_id == "1999_15_NE_PHI", qtr == 2))
-
-# Missing play right after 13:40 Chandler-to-Mathis 12-yard completion
-# View(pbp %>% filter(game_id == "1999_17_SF_ATL", qtr == 2))
-
-# Missing play right before 6:22 Warren run
-# View(pbp %>% filter(game_id == "1999_18_DAL_MIN", qtr == 4))
-
-# Missing play right after 9:19 Davis 7-yard run
-# View(pbp %>% filter(game_id == "2000_03_DAL_WAS", qtr == 4))
-
 Useless_NoSnap <- pbp %>%
 filter( (penalty == 0 &
 (timeout > 0 & play_type == "no_play")) |
